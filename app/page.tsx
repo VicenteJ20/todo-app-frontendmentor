@@ -4,11 +4,12 @@ import { HeaderBg } from "./components/HeaderBg"
 import { ThemeSwitcher } from "./components/ThemeSwitcher"
 import { CreateToDo } from "./components/CreateToDo"
 import { ShowItems } from "./components/ShowItems"
+import { useEffect } from "react"
+import { useGlobalContext } from "./context/Store"
 
 const Home = () => {
-
-  const darkTheme = false
-
+  const { darkTheme } = useGlobalContext()
+  
   return (
     <main className={`min-h-screen w-screen transition-all duration-500 ${darkTheme ? 'bg-slate-900 text-white' : 'bg-slate-200 text-slate-900'}`}>
       <HeaderBg />

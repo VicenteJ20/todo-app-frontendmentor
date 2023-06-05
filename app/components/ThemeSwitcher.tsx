@@ -3,10 +3,11 @@
 import { getLocalStorage } from "../lib/localStorage"
 import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi"
 import { useState } from "react"
+import { useGlobalContext } from "../context/Store"
 
 export const ThemeSwitcher = () => {
 
-    const [darkTheme, setDarkTheme] = useState(getLocalStorage('theme') === 'dark' ? true : false)
+    const { darkTheme, setDarkTheme } = useGlobalContext()
 
     const handleDarkTheme = () => {
         localStorage.setItem('theme', 'dark')

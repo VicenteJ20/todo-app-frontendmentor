@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import { useGlobalContext } from "../context/Store"
+import { v4 as uuidv4 } from "uuid"
 
 export const CreateToDo = () => {
-    const darkTheme = false
+    const { darkTheme, setData } = useGlobalContext()
 
     const [check, setCheck] = useState(false) as any
     const [message, setMessage] = useState('')
@@ -12,6 +14,7 @@ export const CreateToDo = () => {
         e.preventDefault()
         
         const newData = {
+            id: uuidv4(),
             title: message,
             completed: check
         }
@@ -24,6 +27,7 @@ export const CreateToDo = () => {
             localStorage.setItem('todo', JSON.stringify([newData]))
         }
 
+        setData(JSON.parse(localStorage.getItem('todo') as any))
         setCheck(false)
         setMessage('')
     }

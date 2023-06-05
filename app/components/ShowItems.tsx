@@ -1,9 +1,14 @@
 'use client'
 
-export const ShowItems = () => {
-    const data = JSON.parse(localStorage.getItem('todo') as any)
+import { useEffect } from "react"
+import { useGlobalContext } from '../context/Store'
 
-    const darkTheme = false
+export const ShowItems = () => {
+    const { data, darkTheme, setData } = useGlobalContext()
+
+    useEffect(() => {
+        setData(JSON.parse(localStorage.getItem('todo') as any))
+    }, [])
 
     return (
         <div>
