@@ -16,7 +16,8 @@ export const CreateToDo = () => {
         const newData = {
             id: uuidv4(),
             title: message,
-            completed: check
+            completed: check,
+            fecha: new Date().toISOString()
         }
 
         const data = JSON.parse(localStorage.getItem('todo') as any)
@@ -26,6 +27,8 @@ export const CreateToDo = () => {
         } else {
             localStorage.setItem('todo', JSON.stringify([newData]))
         }
+
+        console.log(newData)
 
         setData(JSON.parse(localStorage.getItem('todo') as any))
         setCheck(false)
