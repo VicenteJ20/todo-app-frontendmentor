@@ -14,7 +14,7 @@ export const ShowItems = () => {
     return (
         <div className='flex flex-col'>
             {
-                data && data.reverse().map((item: any) => {
+                data && data.map((item: any) => {
                     return (
                         <InputTodo key={item.id} checked={item.completed} text={item.title} id={item.id} date={item.fecha} />
                     )
